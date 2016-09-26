@@ -6,7 +6,7 @@
 /*   By: gtandeo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/11 09:46:39 by gtandeo           #+#    #+#             */
-/*   Updated: 2016/08/11 10:36:57 by gtandeo          ###   ########.fr       */
+/*   Updated: 2016/09/27 01:11:15 by gtandeo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <client.h>
 
 void	usage(char *str)
 {
@@ -54,7 +55,7 @@ int		main(int ac, char **av)
 		usage(av[0]);
 	port  = atoi(av[2]);
 	sock = create_client(av[1], port);
-	write(sock, "bonjou\n", 8);
+	write(sock, "bonjour", 8);
 	close(sock);
 	return (0);
 }
