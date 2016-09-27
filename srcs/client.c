@@ -50,7 +50,7 @@ int		main(int ac, char **av)
 		usage(av[0]);
 	port = atoi(av[2]);
 	sock = create_client(av[1], port);
-	while (get_next_line(0, &line) && ft_strcmp(line, "EXIT"))
+	while (get_next_line(0, &line) > 0)
 	{
 		write(sock, line, ft_strlen(line));
 		free(line);

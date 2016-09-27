@@ -42,10 +42,13 @@ static int	create_server(int port)
 
 void		run_server(t_server serv)
 {
-	while (get_next_line(serv.cs, &(serv.line)))
+	int					r;
+	char				buf[1024];
+
+	while ((r = read(serv.cs, buf, 1023)) > 0)
 	{
-		printf("%s\n", serv.line);
-		free(serv.line);
+		buf[r] = '\0';
+		printf("recieved %d bytes: [%s]\n", r, buf);
 	}
 	return ;
 }
@@ -57,8 +60,6 @@ int			main(int ac, char **av)
 	int					sock;
 	unsigned int		cslen;
 	struct sockaddr_in	csin;
-	//int					r;
-	//char				buf[1024];
 
 	if (ac != 2)
 		usage(av[0]);
@@ -66,11 +67,6 @@ int			main(int ac, char **av)
 	sock = create_server(port);
 	serv.cs = accept(sock, (struct sockaddr*)&csin, &cslen);
 	run_server(serv);
-	/*while ((r = read(serv.cs, buf, 1023)) > 0)
-	{
-		buf[r] = '\0';
-		printf("recieved %d bytes: [%s]\n", r, buf);
-	}*/
 	close(serv.cs);
 	close(sock);
 	return (0);
