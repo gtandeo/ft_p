@@ -10,14 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <netdb.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include "../includes/client.h"
+
+#include <client.h>
 
 void	usage(char *str)
 {
@@ -48,14 +42,19 @@ int		create_client(char *addr, int port)
 
 int		main(int ac, char **av)
 {
-	int					port;
-	int					sock;
+	int		port;
+	int		sock;
+	char	*line;
 
 	if (ac != 3)
 		usage(av[0]);
 	port = atoi(av[2]);
 	sock = create_client(av[1], port);
-	write(sock, "bonjour", 8);
+	while (get_next_line(0, &line) && ft_strcmp(line, "EXIT"))
+	{
+		write(sock, line, ft_strlen(line));
+		free(line);
+	}
 	close(sock);
 	return (0);
 }

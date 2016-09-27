@@ -13,4 +13,13 @@
 #ifndef CLIENT_H
 # define CLIENT_H
 
+# include <libft.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <netdb.h>
+# include <sys/socket.h>
+# include <netinet/in.h>
+# include <arpa/inet.h>
+
 #endif

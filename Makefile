@@ -6,7 +6,7 @@
 #    By: gtandeo <gtandeo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/07 10:52:01 by gtandeo           #+#    #+#              #
-#    Updated: 2016/09/01 15:40:32 by gtandeo          ###   ########.fr        #
+#    Updated: 2016/09/27 22:56:16 by gtandeo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,6 @@ SRCS = srcs/
 SRC_SERVER = server.c
 
 SRC_CLIENT = client.c
-
-SRCO = $(SRC:.c=.o)
 
 INCDIR = ./includes
 
@@ -51,8 +49,6 @@ $(CLIENT): $(LIB) $(addprefix $(SRCS),$(SRC_CLIENT))
 	@echo "\033[33m"$(CLIENT) Compiled ! "\033[32m"Success
 
 clean:
-	@rm -f $(SRCO)
-	@echo "\033[33m"ft_p objects Deleted ! "\033[32m"Success
 	@make clean -C $(LIBDIR)
 	@echo "\033[33m"libft objects Deleted ! "\033[32m"Success
 
