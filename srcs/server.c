@@ -59,7 +59,7 @@ int		main(int ac, char **av)
 
 	if (ac != 2)
 		usage(av[0]);
-	port  = atoi(av[1]);
+	port = atoi(av[1]);
 	sock = create_server(port);
 	cs = accept(sock, (struct sockaddr*)&csin, &cslen);
 	while ((r = read(cs, buf, 1023)) > 0)

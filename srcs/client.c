@@ -53,7 +53,7 @@ int		main(int ac, char **av)
 
 	if (ac != 3)
 		usage(av[0]);
-	port  = atoi(av[2]);
+	port = atoi(av[2]);
 	sock = create_client(av[1], port);
 	write(sock, "bonjour", 8);
 	close(sock);
