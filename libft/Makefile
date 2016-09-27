@@ -92,7 +92,6 @@ $(OBJ): $(HEAD)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 clean:
-	@echo "\033[33m"Objects Deleted ! "\033[32m"Success
 	@rm -f $(OBJ)
 
 fclean: clean

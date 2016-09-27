@@ -14,19 +14,27 @@ LIB = libft/libft.a
 
 LIBDIR = libft
 
+CC = cc
+
 SERVER = server
 
 CLIENT = client
 
-SRC_DIR = srcs/
+SRCS = srcs/
 
 SRC_SERVER = server.c
 
 SRC_CLIENT = client.c
 
+SRCO = $(SRC:.c=.o)
+
 INCDIR = ./includes
 
-CFLAGS = -Wall -Wextra -Werror -L libft -lft -I $(INCDIR)
+CFLAGS = -Wall -Wextra -Werror
+
+HEADERS = -Llibft -lft
+
+LIBRARIES = -I $(INCDIR) -I $(LIBDIR)
 
 all: $(LIB) $(SERVER) $(CLIENT)
 
@@ -34,16 +42,19 @@ $(LIB):
 	@make -C $(LIBDIR) fclean
 	@make -C $(LIBDIR)
 
-$(SERVER): $(LIB) $(addprefix $(SRC_DIR),$(SRC_SERVER))
-	@cc -o $(SERVER) $(addprefix $(SRC_DIR),$(SRC_SERVER)) $(CFLAGS)
+$(SERVER): $(LIB) $(addprefix $(SRCS),$(SRC_SERVER))
+	@$(CC) $(addprefix $(SRCS),$(SRC_SERVER)) $(CFLAGS) $(HEADERS) $(LIBRARIES) -o $(SERVER)
 	@echo "\033[33m"$(SERVER) Compiled ! "\033[32m"Success
 
-$(CLIENT): $(LIB) $(addprefix $(SRC_DIR),$(SRC_CLIENT))
-	@cc -o $(CLIENT) $(addprefix $(SRC_DIR),$(SRC_CLIENT)) $(CFLAGS)
+$(CLIENT): $(LIB) $(addprefix $(SRCS),$(SRC_CLIENT))
+	@$(CC) $(addprefix $(SRCS),$(SRC_CLIENT)) $(CFLAGS) $(HEADERS) $(LIBRARIES) -o $(CLIENT)
 	@echo "\033[33m"$(CLIENT) Compiled ! "\033[32m"Success
 
 clean:
+	@rm -f $(SRCO)
+	@echo "\033[33m"ft_p objects Deleted ! "\033[32m"Success
 	@make clean -C $(LIBDIR)
+	@echo "\033[33m"libft objects Deleted ! "\033[32m"Success
 
 fclean: clean
 	@rm -f $(SERVER)
@@ -51,6 +62,7 @@ fclean: clean
 	@rm -f $(CLIENT)
 	@echo "\033[33m"$(CLIENT) Deleted ! "\033[32m"Success
 	@make fclean -C $(LIBDIR)
+	@echo "\033[33m"libft.a Deleted ! "\033[32m"Success
 
 re: fclean all
 

@@ -17,7 +17,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include <client.h>
+#include "../includes/client.h"
 
 void	usage(char *str)
 {
