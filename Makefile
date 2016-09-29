@@ -23,7 +23,8 @@ CLIENT = client
 SRCS = srcs/
 
 SRC_SERVER = server.c \
-				login_data.c
+				login_data.c \
+				connexion.c
 
 SRC_CLIENT = client.c
 

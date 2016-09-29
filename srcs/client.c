@@ -42,10 +42,33 @@ int		create_client(char *addr, int port)
 void	get_connexion_request(int sock)
 {
 	char	*line;
+	char	*server_line;
 
-	get_next_line(0, &line);
-	ft_putendl_fd(line, sock);
-	ft_putendl_fd(line, sock);
+	while (get_next_line(sock, &server_line) > 0 && ft_strcmp(server_line, "login_ok"))
+	{
+		if (!ft_strcmp(server_line, "WAIT"))
+		{
+			get_next_line(0, &line);
+			ft_putendl_fd(line, sock);
+			free(line);
+		}
+		else
+			ft_putendl(server_line);
+		free(server_line);
+	}
+	ft_putendl("pass login");
+	while (get_next_line(sock, &server_line) > 0 && ft_strcmp(server_line, "psswd_ok"))
+	{
+		if (!ft_strcmp(server_line, "WAIT"))
+		{
+			get_next_line(0, &line);
+			ft_putendl_fd(line, sock);
+		}
+		else
+			ft_putendl(server_line);
+		free(server_line);
+	}
+	
 	return ;
 }
 
@@ -60,9 +83,7 @@ int		main(int ac, char **av)
 	port = atoi(av[2]);
 	sock = create_client(av[1], port);
 	ft_putendl_fd("connect", sock);
-
 	get_connexion_request(sock);
-
 	while (get_next_line(0, &line) > 0 && ft_strcmp(line, "EXIT"))
 	{
 		ft_putendl_fd(line, sock);

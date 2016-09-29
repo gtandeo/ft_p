@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <server.h>
+#include <connexion.h>
 
 static void	usage(char *str)
 {
@@ -44,57 +45,6 @@ static int	create_server(int port)
 {
 	return ;
 }*/
-
-int			find_login(t_login_data *list, const char *client_login, char **client_psswd)
-{
-	t_login_data	*tmp;
-
-	if (list)
-	{
-		tmp = list;
-		while (tmp && tmp->next)
-		{
-			if (ft_strcmp(tmp->login, client_login))
-			{
-				*client_psswd = ft_strdup(tmp->psswd);
-				return (1);
-			}
-			tmp = tmp->next;
-		}
-	}
-	return (0);
-}
-
-void		wait_client_login(t_server serv)
-{
-	while (ft_strcmp(serv.line, "connect"))
-	{
-		if (serv.line)
-			free(serv.line);
-		get_next_line(serv.cs, &(serv.line));
-		ft_putendl(serv.line);
-	}
-	ft_putendl_fd("login: ", serv.cs);
-	while (get_next_line(serv.cs, &(serv.line)) && find_login(serv.data_list, serv.login, &(serv.psswd)))	//wait client login
-	{
-		ft_putendl_fd("Connexion error: bad login", serv.cs);
-		ft_putendl_fd("login: ", serv.cs);
-		free(serv.line);
-	}
-	//ft_putendl(serv.line);
-	serv.login = ft_strdup(serv.line);
-	free(serv.line);
-	ft_putendl_fd("password:", serv.cs);
-	while (get_next_line(serv.cs, &(serv.line)) && ft_strcmp(serv.login, serv.psswd))						//wait client password
-	{
-		ft_putendl_fd("Connexion error: incorrect password", serv.cs);
-		ft_putendl_fd("password", serv.cs);
-		free(serv.line);
-	}
-	//ft_putendl(serv.line);
-	free(serv.line);
-	ft_putendl("//end");
-}
 
 void		run_server(t_server serv)
 {
