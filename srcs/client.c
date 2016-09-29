@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <client.h>
 
 void	usage(char *str)
@@ -50,9 +49,9 @@ int		main(int ac, char **av)
 		usage(av[0]);
 	port = atoi(av[2]);
 	sock = create_client(av[1], port);
-	while (get_next_line(0, &line) > 0)
+	while (get_next_line(0, &line) > 0 && ft_strcmp(line, "EXIT"))
 	{
-		write(sock, line, ft_strlen(line));
+		ft_putendl_fd(line, sock);
 		free(line);
 	}
 	close(sock);

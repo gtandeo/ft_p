@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.h                                           :+:      :+:    :+:   */
+/*   ft_free_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtandeo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/27 01:19:50 by gtandeo           #+#    #+#             */
-/*   Updated: 2016/09/27 01:19:51 by gtandeo          ###   ########.fr       */
+/*   Created: 2016/09/29 22:21:16 by gtandeo           #+#    #+#             */
+/*   Updated: 2016/09/29 22:22:48 by gtandeo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_H
-# define SERVER_H
+#include "libft.h"
 
-# include <libft.h>
-# include <login_data.h>
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <netdb.h>
-# include <sys/socket.h>
-# include <netinet/in.h>
-# include <arpa/inet.h>
-
-typedef struct			s_server
+void	ft_free_tab(char **tab)
 {
-	int					cs;
-	char				*line;
-	struct s_login_data	*data_list;
-}						t_server;
+	int		i;
 
-#endif
+	if (!tab)
+		return ;
+	i = ft_tablen(tab);
+	while (--i)
+		free(tab[i]);
+	free(tab);
+}

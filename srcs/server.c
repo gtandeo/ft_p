@@ -40,15 +40,18 @@ static int	create_server(int port)
 	return (sock);
 }
 
+/*void		parse_command(t_server serv)
+{
+	return ;
+}*/
+
 void		run_server(t_server serv)
 {
-	int					r;
-	char				buf[1024];
-
-	while ((r = read(serv.cs, buf, 1023)) > 0)
+	while (get_next_line(serv.cs, &(serv.line)))
 	{
-		buf[r] = '\0';
-		printf("recieved %d bytes: [%s]\n", r, buf);
+		printf("recieved %zu bytes: [%s]\n", ft_strlen(serv.line), serv.line);
+		//parse_command(serv);
+		free(serv.line);
 	}
 	return ;
 }
@@ -64,9 +67,12 @@ int			main(int ac, char **av)
 	if (ac != 2)
 		usage(av[0]);
 	port = atoi(av[1]);
+	serv.data_list = get_connexion_data();
+	printf("%s\n", serv.data_list->login);
 	sock = create_server(port);
 	serv.cs = accept(sock, (struct sockaddr*)&csin, &cslen);
 	run_server(serv);
+	delete_connexion_data(serv.data_list);
 	close(serv.cs);
 	close(sock);
 	return (0);

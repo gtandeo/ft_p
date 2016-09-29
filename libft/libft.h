@@ -6,7 +6,7 @@
 /*   By: gtandeo <gtandeo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 10:14:07 by gtandeo           #+#    #+#             */
-/*   Updated: 2014/12/08 12:35:39 by gtandeo          ###   ########.fr       */
+/*   Updated: 2016/09/29 22:21:43 by gtandeo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
+void	ft_free_tab(char **tab);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
