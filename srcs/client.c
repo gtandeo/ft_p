@@ -39,6 +39,16 @@ int		create_client(char *addr, int port)
 	return (sock);
 }
 
+void	get_connexion_request(int sock)
+{
+	char	*line;
+
+	get_next_line(0, &line);
+	ft_putendl_fd(line, sock);
+	ft_putendl_fd(line, sock);
+	return ;
+}
+
 int		main(int ac, char **av)
 {
 	int		port;
@@ -49,6 +59,10 @@ int		main(int ac, char **av)
 		usage(av[0]);
 	port = atoi(av[2]);
 	sock = create_client(av[1], port);
+	ft_putendl_fd("connect", sock);
+
+	get_connexion_request(sock);
+
 	while (get_next_line(0, &line) > 0 && ft_strcmp(line, "EXIT"))
 	{
 		ft_putendl_fd(line, sock);

@@ -21,6 +21,7 @@
 
 typedef struct			s_login_data
 {
+	int					used;
 	char				*login;
 	char				*psswd;
 	struct s_login_data	*next;

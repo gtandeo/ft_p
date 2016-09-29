@@ -22,6 +22,7 @@ static t_login_data	*create_login_node(const char *login, const char *psswd)
 		elm->psswd = ft_strdup(psswd);
 		elm->next = NULL;
 		elm->prev = NULL;
+		elm->used = 0;
 		return (elm);
 	}
 	return (NULL);

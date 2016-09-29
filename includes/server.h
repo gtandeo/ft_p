@@ -27,6 +27,8 @@
 typedef struct			s_server
 {
 	int					cs;
+	char				*login;
+	char				*psswd;
 	char				*line;
 	struct s_login_data	*data_list;
 }						t_server;
