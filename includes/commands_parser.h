@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.h                                           :+:      :+:    :+:   */
+/*   commands_parser.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gtandeo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/27 01:19:50 by gtandeo           #+#    #+#             */
-/*   Updated: 2016/09/27 01:19:51 by gtandeo          ###   ########.fr       */
+/*   Created: 2016/10/01 00:09:50 by gtandeo           #+#    #+#             */
+/*   Updated: 2016/10/01 00:09:51 by gtandeo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_H
-# define SERVER_H
+#ifndef COMMANDS_PARSER_H
+# define COMMANDS_PARSER_H
 
 # include <libft.h>
-# include <login_data.h>
-# include <commands_parser.h>
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <netdb.h>
-# include <sys/socket.h>
-# include <netinet/in.h>
-# include <arpa/inet.h>
-
-typedef struct			s_server
+typedef struct			s_commands
 {
-	int					cs;
-	char				*login;
-	char				*psswd;
-	char				*line;
-	struct s_login_data	*data_list;
-}						t_server;
+	char				*command;
+	struct s_commands	*next;
+	struct s_commands	*prev;
+}						t_commands;
+
+t_commands	*get_commands(const char *command_line);
 
 #endif

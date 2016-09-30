@@ -56,7 +56,6 @@ void	get_connexion_request(int sock)
 			ft_putendl(server_line);
 		free(server_line);
 	}
-	ft_putendl("pass login");
 	while (get_next_line(sock, &server_line) > 0 && ft_strcmp(server_line, "psswd_ok"))
 	{
 		if (!ft_strcmp(server_line, "WAIT"))
@@ -68,8 +67,6 @@ void	get_connexion_request(int sock)
 			ft_putendl(server_line);
 		free(server_line);
 	}
-	
-	return ;
 }
 
 int		main(int ac, char **av)
@@ -84,7 +81,7 @@ int		main(int ac, char **av)
 	sock = create_client(av[1], port);
 	ft_putendl_fd("connect", sock);
 	get_connexion_request(sock);
-	while (get_next_line(0, &line) > 0 && ft_strcmp(line, "EXIT"))
+	while (get_next_line(0, &line) > 0 && ft_strcmp(line, "quit"))
 	{
 		ft_putendl_fd(line, sock);
 		free(line);

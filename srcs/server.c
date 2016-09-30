@@ -41,19 +41,38 @@ static int	create_server(int port)
 	return (sock);
 }
 
-/*void		parse_command(t_server serv)
+void		parse_command(t_server serv)
 {
-	return ;
-}*/
+	t_commands	*command_list;
+
+	if ((command_list = get_commands(serv.line)) != NULL)
+	{
+		if (!ft_strncmp(command_list->command, "ls", 2))
+			ft_putendl("ls");
+		else if (!ft_strncmp(command_list->command, "cd", 2))
+			ft_putendl("cd");
+		else if (!ft_strncmp(command_list->command, "put", 3))
+			ft_putendl("put");
+		else if (!ft_strncmp(command_list->command, "get", 3))
+			ft_putendl("get");
+		else if (!ft_strncmp(command_list->command, "pwd", 2))
+			ft_putendl("pwd");
+		else
+		{
+			ft_putstr_fd("ft_p: command not found: ", serv.cs);
+			ft_putendl_fd(command_list->command, serv.cs);
+		}
+	}
+}
 
 void		run_server(t_server serv)
 {
 	if (serv.data_list)
 		wait_client_login(serv);
-	while (get_next_line(serv.cs, &(serv.line)))
+	while (get_next_line(serv.cs, &(serv.line)) > 0)
 	{
 		printf("recieved %zu bytes: [%s]\n", ft_strlen(serv.line), serv.line);
-		//parse_command(serv);
+		parse_command(serv);
 		free(serv.line);
 	}
 	return ;
