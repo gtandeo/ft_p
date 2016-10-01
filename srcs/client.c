@@ -12,13 +12,22 @@
 
 #include <client.h>
 
-void	usage(char *str)
+static void	usage(char *str)
 {
 	printf("Usage: %s <arrd> <port>\n", str);
 	exit(-1);
 }
 
-int		create_client(char *addr, int port)
+static void	display_client_informations(int sock)
+{
+	ft_putstr_fd("client no.", sock);
+	ft_putnbr_fd(sock, sock);
+	ft_putendl_fd(": connect", sock);
+	ft_putendl_fd("END", sock);
+	return ;
+}
+
+int			create_client(char *addr, int port)
 {
 	int					sock;
 	struct protoent		*proto;
@@ -39,7 +48,7 @@ int		create_client(char *addr, int port)
 	return (sock);
 }
 
-void	get_connexion_request(int sock)
+void		get_connexion_request(int sock)
 {
 	char	*line;
 	char	*server_line;
@@ -69,7 +78,7 @@ void	get_connexion_request(int sock)
 	}
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	int		port;
 	int		sock;
@@ -79,10 +88,7 @@ int		main(int ac, char **av)
 		usage(av[0]);
 	port = atoi(av[2]);
 	sock = create_client(av[1], port);
-	ft_putstr_fd("client no.", sock);
-	ft_putnbr_fd(sock, sock);
-	ft_putendl_fd(": connect", sock);
-	ft_putendl_fd("END", sock);
+	display_client_informations(sock);
 	get_connexion_request(sock);
 	while (get_next_line(0, &line) > 0 && ft_strcmp(line, "quit"))
 	{
