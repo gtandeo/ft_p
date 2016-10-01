@@ -79,7 +79,10 @@ int		main(int ac, char **av)
 		usage(av[0]);
 	port = atoi(av[2]);
 	sock = create_client(av[1], port);
-	ft_putendl_fd("connect", sock);
+	ft_putstr_fd("client no.", sock);
+	ft_putnbr_fd(sock, sock);
+	ft_putendl_fd(": connect", sock);
+	ft_putendl_fd("END", sock);
 	get_connexion_request(sock);
 	while (get_next_line(0, &line) > 0 && ft_strcmp(line, "quit"))
 	{

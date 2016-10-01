@@ -50,12 +50,14 @@ void		wait_client_psswd(t_server serv)
 
 void		wait_client_login(t_server serv)
 {
-	while (ft_strcmp(serv.line, "connect"))			//wait client connexion request
+	while (ft_strcmp(serv.line, "END"))			//wait client connexion request
 	{
 		if (serv.line)
+		{
+			ft_putendl(serv.line);
 			free(serv.line);
+		}
 		get_next_line(serv.cs, &(serv.line));
-		ft_putendl(serv.line);
 	}
 	ft_putendl_fd("login: ", serv.cs);
 	ft_putendl_fd("WAIT", serv.cs);
