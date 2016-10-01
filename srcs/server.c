@@ -63,6 +63,7 @@ void		parse_command(t_server serv)
 			ft_putendl_fd(command_list->command, serv.cs);
 		}
 	}
+	ft_putendl_fd("\033", serv.cs);
 }
 
 void		run_server(t_server serv)

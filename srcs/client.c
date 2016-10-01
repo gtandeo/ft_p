@@ -85,6 +85,11 @@ int		main(int ac, char **av)
 	{
 		ft_putendl_fd(line, sock);
 		free(line);
+		while (get_next_line(sock, &line) > 0 && ft_strcmp(line, "\033"))
+		{
+			ft_putendl(line);
+			free(line);
+		}
 	}
 	close(sock);
 	return (0);
