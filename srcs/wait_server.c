@@ -36,7 +36,7 @@ static void	wait_get(int sock, char *command)
 	if (wait_server_pass(sock))
 		return ;
 	file_name = get_file_name(command);
-	if ((fd = open(file_name, O_CREAT | O_WRONLY | O_APPEND, 755)) == -1)
+	if ((fd = open(file_name, O_CREAT | O_WRONLY | O_APPEND, S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH)) == -1)
 		return ;
 	while (get_next_line(sock, &line) > 0 && ft_strcmp(line, "\033"))
 	{
