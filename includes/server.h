@@ -18,6 +18,7 @@
 # include <exec_ls.h>
 # include <exec_pwd.h>
 # include <exec_get.h>
+# include <exec_put.h>
 
 # include <stdio.h>
 # include <stdlib.h>

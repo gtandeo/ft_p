@@ -27,7 +27,8 @@ SRC_SERVER = server.c \
 				connexion.c \
 				exec_ls.c \
 				exec_pwd.c \
-				exec_get.c
+				exec_get.c \
+				exec_put.c
 
 SRC_CLIENT = client.c \
 				wait_server.c \

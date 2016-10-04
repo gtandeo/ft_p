@@ -20,7 +20,7 @@ static void	wait_get(int sock, char *command)
 	close(fd);
 }
 
-static void	wait_set(int sock, char *command)
+static void	wait_put(int sock, char *command)
 {
 	(void)sock;
 	(void)command;
@@ -42,7 +42,7 @@ void		wait_server(int sock, char *command)
 	if (!ft_strncmp(command, "get", 3))
 		wait_get(sock, command);
 	else if (!ft_strncmp(command, "set", 3))
-		wait_set(sock, command);
+		wait_put(sock, command);
 	else
 		wait_other(sock);
 }

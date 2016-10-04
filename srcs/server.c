@@ -52,7 +52,7 @@ void		parse_command(t_server serv)
 		else if (!ft_strcmp(command_list[0], "cd"))
 			ft_putendl("cd");
 		else if (!ft_strcmp(command_list[0], "put"))
-			ft_putendl("put");
+			exec_put(serv.cs, command_list);
 		else if (!ft_strcmp(command_list[0], "get"))
 			exec_get(serv.cs, command_list);
 		else if (!ft_strcmp(command_list[0], "pwd"))
