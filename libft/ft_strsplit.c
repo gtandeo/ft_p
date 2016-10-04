@@ -42,7 +42,7 @@ char			**ft_strsplit(char const *s, char c)
 	int		i;
 	int		start;
 
-	if (!s || !(tab = (char **)malloc(sizeof(char *) * (ft_words(s, c) + 1))))
+	if (!s[0] || !s || !(tab = (char **)malloc(sizeof(char *) * (ft_words(s, c) + 1))))
 		return (NULL);
 	i = 0;
 	size = 0;

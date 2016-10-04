@@ -65,6 +65,7 @@ t_login_data		*get_connexion_data(void)
 		ft_free_tab(tmp);
 		free(line);
 	}
+	close(fd);
 	return (list);
 }
 
