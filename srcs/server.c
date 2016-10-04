@@ -41,12 +41,26 @@ static int	create_server(int port)
 	return (sock);
 }
 
+static void	ft_print_list(t_commands *s)
+{
+	t_commands	*tmp;
+
+	tmp = s;
+	while (tmp)
+	{
+		ft_putendl(tmp->command);
+		tmp = tmp->next;
+	}
+	return ;
+}
+
 void		parse_command(t_server serv)
 {
 	t_commands	*command_list;
 
 	if ((command_list = get_commands(serv.line)) != NULL)
 	{
+		ft_print_list(command_list);
 		if (!ft_strncmp(command_list->command, "ls", 2))
 			ft_putendl("ls");
 		else if (!ft_strncmp(command_list->command, "cd", 2))
@@ -72,7 +86,7 @@ void		run_server(t_server serv)
 		wait_client_login(serv);
 	while (get_next_line(serv.cs, &(serv.line)) > 0)
 	{
-		printf("recieved %zu bytes: [%s]\n", ft_strlen(serv.line), serv.line);
+		//printf("recieved %zu bytes: [%s]\n", ft_strlen(serv.line), serv.line);
 		parse_command(serv);
 		free(serv.line);
 	}
