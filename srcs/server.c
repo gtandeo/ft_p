@@ -12,7 +12,6 @@
 
 #include <server.h>
 #include <connexion.h>
-#include <exec_ls.h>
 
 static void	usage(char *str)
 {
@@ -55,9 +54,9 @@ void		parse_command(t_server serv)
 		else if (!ft_strcmp(command_list[0], "put"))
 			ft_putendl("put");
 		else if (!ft_strcmp(command_list[0], "get"))
-			ft_putendl("get");
+			exec_get(serv.cs, command_list);
 		else if (!ft_strcmp(command_list[0], "pwd"))
-			ft_putendl("pwd");
+			exec_pwd(serv.cs, command_list);
 		else
 		{
 			ft_putstr_fd("ft_p: command not found: ", serv.cs);

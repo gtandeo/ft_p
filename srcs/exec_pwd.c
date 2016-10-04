@@ -1,6 +1,6 @@
-#include <exec_ls.h>
+#include <exec_pwd.h>
 
-void	exec_ls(int cs, char **command)
+void	exec_pwd(int cs, char **command)
 {
 	pid_t	i;
 
@@ -8,7 +8,7 @@ void	exec_ls(int cs, char **command)
 	if (i == 0)
 	{
 		dup2(cs, 1);
-		execv("/bin/ls", command);
+		execv("/bin/pwd", command);
 	}
 	else if (i > 0)
 		wait4(i, 0, 0, NULL);

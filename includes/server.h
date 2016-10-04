@@ -15,6 +15,9 @@
 
 # include <libft.h>
 # include <login_data.h>
+# include <exec_ls.h>
+# include <exec_pwd.h>
+# include <exec_get.h>
 
 # include <stdio.h>
 # include <stdlib.h>

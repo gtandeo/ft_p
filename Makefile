@@ -25,7 +25,9 @@ SRCS = srcs/
 SRC_SERVER = server.c \
 				login_data.c \
 				connexion.c \
-				exec_ls.c
+				exec_ls.c \
+				exec_pwd.c \
+				exec_get.c
 
 SRC_CLIENT = client.c
 
