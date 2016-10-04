@@ -30,7 +30,8 @@ SRC_SERVER = server.c \
 				exec_get.c
 
 SRC_CLIENT = client.c \
-				wait_server.c
+				wait_server.c \
+				wait_utilities.c
 
 INCDIR = ./includes
 
