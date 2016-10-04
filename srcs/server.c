@@ -49,7 +49,7 @@ void		parse_command(t_server serv)
 	if ((command_list = ft_strsplit(serv.line, ' ')) != NULL)
 	{
 		if (!ft_strcmp(command_list[0], "ls"))
-			exec_ls(serv, command_list);
+			exec_ls(serv.cs, command_list);
 		else if (!ft_strcmp(command_list[0], "cd"))
 			ft_putendl("cd");
 		else if (!ft_strcmp(command_list[0], "put"))

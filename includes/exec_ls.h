@@ -4,6 +4,6 @@
 # include <unistd.h>
 # include <server.h>
 
-void	exec_ls(t_server serv, char **command);
+void	exec_ls(int cs, char **command);
 
 #endif
