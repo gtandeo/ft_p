@@ -3,6 +3,8 @@
 
 # include <libft.h>
 
+# include <fcntl.h>
+
 void	exec_get(int cs, char **command);
 
 #endif

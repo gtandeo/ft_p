@@ -29,7 +29,8 @@ SRC_SERVER = server.c \
 				exec_pwd.c \
 				exec_get.c
 
-SRC_CLIENT = client.c
+SRC_CLIENT = client.c \
+				wait_server.c
 
 INCDIR = ./includes
 

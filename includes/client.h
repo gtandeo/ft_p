@@ -14,6 +14,7 @@
 # define CLIENT_H
 
 # include <libft.h>
+# include <wait_server.h>
 
 # include <stdio.h>
 # include <stdlib.h>
