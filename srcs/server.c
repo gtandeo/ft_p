@@ -12,6 +12,7 @@
 
 #include <server.h>
 #include <connexion.h>
+#include <exec_ls.h>
 
 static void	usage(char *str)
 {
@@ -41,42 +42,29 @@ static int	create_server(int port)
 	return (sock);
 }
 
-static void	ft_print_list(t_commands *s)
-{
-	t_commands	*tmp;
-
-	tmp = s;
-	while (tmp)
-	{
-		ft_putendl(tmp->command);
-		tmp = tmp->next;
-	}
-	return ;
-}
-
 void		parse_command(t_server serv)
 {
-	t_commands	*command_list;
+	char	**command_list;
 
-	if ((command_list = get_commands(serv.line)) != NULL)
+	if ((command_list = ft_strsplit(serv.line, ' ')) != NULL)
 	{
-		ft_print_list(command_list);
-		if (!ft_strncmp(command_list->command, "ls", 2))
-			ft_putendl("ls");
-		else if (!ft_strncmp(command_list->command, "cd", 2))
+		if (!ft_strcmp(command_list[0], "ls"))
+			exec_ls(serv, command_list);
+		else if (!ft_strcmp(command_list[0], "cd"))
 			ft_putendl("cd");
-		else if (!ft_strncmp(command_list->command, "put", 3))
+		else if (!ft_strcmp(command_list[0], "put"))
 			ft_putendl("put");
-		else if (!ft_strncmp(command_list->command, "get", 3))
+		else if (!ft_strcmp(command_list[0], "get"))
 			ft_putendl("get");
-		else if (!ft_strncmp(command_list->command, "pwd", 2))
+		else if (!ft_strcmp(command_list[0], "pwd"))
 			ft_putendl("pwd");
 		else
 		{
 			ft_putstr_fd("ft_p: command not found: ", serv.cs);
-			ft_putendl_fd(command_list->command, serv.cs);
+			ft_putendl_fd(command_list[0], serv.cs);
 		}
 	}
+	ft_free_tab(command_list);
 	ft_putendl_fd("\033", serv.cs);
 }
 
@@ -86,7 +74,6 @@ void		run_server(t_server serv)
 		wait_client_login(serv);
 	while (get_next_line(serv.cs, &(serv.line)) > 0)
 	{
-		//printf("recieved %zu bytes: [%s]\n", ft_strlen(serv.line), serv.line);
 		parse_command(serv);
 		free(serv.line);
 	}
