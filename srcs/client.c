@@ -90,6 +90,7 @@ int			main(int ac, char **av)
 	sock = create_client(av[1], port);
 	display_client_informations(sock);
 	get_connexion_request(sock);
+	ft_putstr("client> ");
 	while (get_next_line(0, &line) > 0 && ft_strcmp(line, "quit"))
 	{
 		ft_putendl_fd(line, sock);
@@ -99,6 +100,7 @@ int			main(int ac, char **av)
 			ft_putendl(line);
 			free(line);
 		}
+		ft_putstr("client> ");
 	}
 	close(sock);
 	return (0);
