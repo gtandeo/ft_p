@@ -96,11 +96,6 @@ int			main(int ac, char **av)
 		ft_putendl_fd(line, sock);
 		wait_server(sock, line);
 		free(line);
-		/*while (get_next_line(sock, &line) > 0 && ft_strcmp(line, "\033"))
-		{
-			ft_putendl(line);
-			free(line);
-		}*/
 		ft_putstr("client> ");
 	}
 	close(sock);

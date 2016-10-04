@@ -3,6 +3,8 @@
 
 # include <libft.h>
 
+# include <fcntl.h>
+
 void	wait_server(int sock, char *command);
 
 #endif

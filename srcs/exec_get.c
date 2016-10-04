@@ -17,6 +17,7 @@ void	exec_get(int cs, char **command)
 		ft_putendl_fd(": cant open file", cs);
 		return ;
 	}
+	ft_putendl_fd("get_ok", cs);
 	while (get_next_line(file, &line) > 0)
 	{
 		ft_putendl_fd(line, cs);
