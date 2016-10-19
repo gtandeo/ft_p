@@ -53,7 +53,8 @@ void		get_connexion_request(int sock)
 	char	*line;
 	char	*server_line;
 
-	while (get_next_line(sock, &server_line) > 0 && ft_strcmp(server_line, "login_ok"))
+	while (get_next_line(sock, &server_line) > 0
+		&& ft_strcmp(server_line, "login_ok"))
 	{
 		if (!ft_strcmp(server_line, "WAIT"))
 		{
@@ -65,7 +66,8 @@ void		get_connexion_request(int sock)
 			ft_putendl(server_line);
 		free(server_line);
 	}
-	while (get_next_line(sock, &server_line) > 0 && ft_strcmp(server_line, "psswd_ok"))
+	while (get_next_line(sock, &server_line) > 0
+		&& ft_strcmp(server_line, "psswd_ok"))
 	{
 		if (!ft_strcmp(server_line, "WAIT"))
 		{

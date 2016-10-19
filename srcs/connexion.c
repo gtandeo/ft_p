@@ -12,7 +12,8 @@
 
 #include <connexion.h>
 
-static int	find_login(t_login_data *list, const char *client_login, char **client_psswd)
+static int	find_login(t_login_data *list,
+	const char *client_login, char **client_psswd)
 {
 	t_login_data	*tmp;
 
@@ -36,7 +37,8 @@ void		wait_client_psswd(t_server serv)
 {
 	ft_putendl_fd("password:", serv.cs);
 	ft_putendl_fd("WAIT", serv.cs);
-	while (get_next_line(serv.cs, &(serv.line)) > 0 && ft_strcmp(serv.line, serv.psswd))						//wait client password
+	while (get_next_line(serv.cs, &(serv.line)) > 0
+		&& ft_strcmp(serv.line, serv.psswd))
 	{
 		ft_putendl_fd("Connexion error: incorrect password", serv.cs);
 		ft_putendl_fd("password: ", serv.cs);
@@ -50,7 +52,7 @@ void		wait_client_psswd(t_server serv)
 
 void		wait_client_login(t_server serv)
 {
-	while (ft_strcmp(serv.line, "END"))			//wait client connexion request
+	while (ft_strcmp(serv.line, "END"))
 	{
 		if (serv.line)
 		{
@@ -61,7 +63,8 @@ void		wait_client_login(t_server serv)
 	}
 	ft_putendl_fd("login: ", serv.cs);
 	ft_putendl_fd("WAIT", serv.cs);
-	while (get_next_line(serv.cs, &(serv.line)) > 0 && find_login(serv.data_list, serv.line, &(serv.psswd)))	//wait client login
+	while (get_next_line(serv.cs, &(serv.line)) > 0
+		&& find_login(serv.data_list, serv.line, &(serv.psswd)))
 	{
 		ft_putendl_fd("Connexion error: bad login", serv.cs);
 		ft_putendl_fd("login: ", serv.cs);
