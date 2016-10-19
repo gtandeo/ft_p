@@ -69,6 +69,7 @@ int		ft_strnequ(const char *s1, const char *s2, size_t n);
 char	*ft_strnew(size_t size);
 char	*ft_strrchr(const char *s, int c);
 char	**ft_strsplit(const char *s, char c);
+char	**ft_strsplit_whitespace(char const *s);
 char	*ft_strstr(const char *s1, const char *s2);
 char	*ft_strsub(const char *s, unsigned int start, size_t len);
 char	*ft_strtrim(const char *s);

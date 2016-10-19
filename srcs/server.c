@@ -45,7 +45,7 @@ void		parse_command(t_server serv)
 {
 	char	**command_list;
 
-	if ((command_list = ft_strsplit(serv.line, ' ')) != NULL)
+	if ((command_list = ft_strsplit_whitespace(serv.line)) != NULL)
 	{
 		if (!ft_strcmp(command_list[0], "ls"))
 			exec_ls(serv.cs, command_list);

@@ -6,7 +6,7 @@
 #    By: gtandeo <gtandeo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 15:40:28 by gtandeo           #+#    #+#              #
-#    Updated: 2014/12/08 12:36:03 by gtandeo          ###   ########.fr        #
+#    Updated: 2016/10/20 01:33:31 by gtandeo          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -64,6 +64,7 @@ SRC = ft_atoi.c \
 		ft_strsub.c \
 		ft_strtrim.c \
 		ft_strsplit.c \
+		ft_strsplit_whitespace.c \
 		ft_tolower.c \
 		ft_toupper.c \
 		ft_fill_str.c \
