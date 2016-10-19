@@ -24,7 +24,7 @@ void	exec_get(int cs, char **command)
 	}
 	if ((file = open(command[1], O_RDONLY)) == -1)
 	{
-		ft_putstr_fd("get: ", cs);
+		ft_putstr_fd("ERROR\nget: ", cs);
 		ft_putstr_fd(command[1], cs);
 		ft_putendl_fd(": cant open file", cs);
 		return ;
