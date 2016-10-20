@@ -6,7 +6,7 @@
 /*   By: gtandeo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 01:33:04 by gtandeo           #+#    #+#             */
-/*   Updated: 2016/10/20 01:33:05 by gtandeo          ###   ########.fr       */
+/*   Updated: 2016/10/20 05:39:24 by gtandeo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ char			**ft_strsplit_whitespace(char const *s)
 	int		i;
 	int		start;
 
-	if (!s[0] || !s || !(tab = (char **)malloc(sizeof(char *) * (ft_words(s) + 1))))
+	if (!s[0] || !s || !(tab = (char **)malloc(sizeof(char *)
+					* (ft_words(s) + 1))))
 		return (NULL);
 	i = 0;
 	size = 0;
