@@ -60,10 +60,13 @@ t_login_data		*get_connexion_data(void)
 	list = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
-		tmp = ft_strsplit(line, ':');
-		list = add_login_node(list, create_login_node(tmp[0], tmp[1]));
-		ft_free_tab(tmp);
-		free(line);
+		if (line[0])
+		{
+			tmp = ft_strsplit(line, ':');
+			list = add_login_node(list, create_login_node(tmp[0], tmp[1]));
+			ft_free_tab(tmp);
+			free(line);
+		}
 	}
 	close(fd);
 	return (list);

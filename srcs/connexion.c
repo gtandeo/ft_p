@@ -20,7 +20,7 @@ static int	find_login(t_login_data *list,
 	if (list)
 	{
 		tmp = list;
-		while (tmp && tmp->next)
+		while (tmp)
 		{
 			if (!ft_strcmp(tmp->login, client_login))
 			{
