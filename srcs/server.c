@@ -15,7 +15,9 @@
 
 static void	usage(char *str)
 {
-	printf("Usage: %s <port>\n", str);
+	ft_putstr("Usage: ");
+	ft_putstr(str);
+	ft_putendl(" <port>");
 	exit(-1);
 }
 
@@ -34,7 +36,7 @@ static int	create_server(int port)
 	sin.sin_addr.s_addr = htonl(INADDR_ANY);
 	if (bind(sock, (const struct sockaddr*)&sin, sizeof(sin)) == -1)
 	{
-		printf("Socket error\n");
+		ft_putendl("Socket error");
 		exit(2);
 	}
 	listen(sock, 42);

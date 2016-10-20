@@ -14,7 +14,9 @@
 
 static void	usage(char *str)
 {
-	printf("Usage: %s <arrd> <port>\n", str);
+	ft_putstr("Usage: ");
+	ft_putstr(str);
+	ft_putendl(" <addr> <port>");
 	exit(-1);
 }
 
@@ -42,7 +44,7 @@ int			create_client(char *addr, int port)
 	sin.sin_addr.s_addr = inet_addr(addr);
 	if (connect(sock, (const struct sockaddr*)&sin, sizeof(sin)) == -1)
 	{
-		printf("Connect error\n");
+		ft_putendl("Connect error");
 		exit(2);
 	}
 	return (sock);

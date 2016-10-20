@@ -25,6 +25,10 @@ void	exec_ls(int cs, char **command)
 	else if (i > 0)
 		wait4(i, 0, 0, NULL);
 	else
+	{
 		ft_putendl("fork error");
+		return ;
+	}
+	ft_putendl_fd("SUCCESS", cs);
 	return ;
 }
